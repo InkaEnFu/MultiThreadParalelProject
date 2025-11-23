@@ -23,29 +23,44 @@ Aplikace řeší reálný problém paralelního zpracování dat: monitorování
 **Business Requirements (BR)**
 
 BR1: Uživatel musí mít možnost automaticky sledovat aktuální hodnotu svého portfolia bez nutnosti manuální aktualizace cen.
+
 BR2: Uživatel musí být okamžitě upozorněn při překročení důležitých cenových úrovní, aby mohl včas reagovat.
+
 BR3: Aplikace musí pracovat paralelně — musí být schopna současně stahovat data, zpracovávat je, kontrolovat alerty a logovat průběh bez blokování.
+
 BR4: Sdílená data musejí být bezpečně dostupná více vláknům bez rizika poškození nebo nekonzistence.
+
 BR5: Aplikace musí minimalizovat lidskou chybu tím, že plně automatizuje monitoring, výpočty i upozornění.
+
 BR6: Systém musí běžet nepřetržitě a reagovat v reálném čase na změny cen na trhu.
+
 BR7: Aplikace musí být reálně použitelná jako součást investičního monitoringu a nesmí být pouze simulací.
 
 **Functional Requirements (FR)**
 
 FR1: Aplikace musí periodicky stahovat reálné ceny akcií AAPL a TSLA.
+
 FR2: Aplikace musí ukládat aktuální ceny do sdíleného stavu.
+
 FR3: Aplikace musí počítat aktuální hodnotu portfolia v reálném čase.
+
 FR4: Aplikace musí vyhodnocovat alerty (cena > limit).
+
 FR5: Aplikace musí zapisovat veškeré události do logu.
+
 FR6: Program musí běžet vícevláknově a nesmí blokovat hlavní vlákno.
+
 FR7: Program musí běžet, dokud jej uživatel neukončí.
 
 **Non-Functional Requirements (NFR)**
 
 NFR1: API požadavky musí být stabilní, nesmí blokovat vlákna (timeout, error handling).
+
 NFR2: Synchronizace sdílených dat musí být bezpečná (thread-safe).
 NFR3: Systém musí být odolný vůči selhání API.
+
 NFR4: Logování nesmí blokovat hlavní běh aplikace.
+
 NFR5: Program musí být snadno konfigurovatelný.
 
 **2. Architektura aplikace**
