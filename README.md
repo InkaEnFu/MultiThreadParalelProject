@@ -13,15 +13,19 @@ Installation:
 
 pip install -r requirements.txt
 
-Fill your portfolio with stocks and its values, set alerts and symbols in the main.py:
-
-PORTFOLIO_CONFIG = {} -> PORTFOLIO_CONFIG = {"AAPL": 10, "TSLA": 5}
-
-ALERT_CONFIG = {} -> ALERT_CONFIG = {"AAPL": 150, "TSLA": 180}
-
 Run:
 
 python main.py
+
+You will be prompted in the console to enter:
+
+    which stocks you want to buy
+
+    how many shares to purchase
+
+    whether you want an alert (y/n)
+
+    the alert price (if applicable)
 
 Detailed documentation and specifications (BR/FR/NFR, tests) are available in the file DOCUMENTATION_EN.md.
 
