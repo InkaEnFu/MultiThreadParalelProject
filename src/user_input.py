@@ -39,8 +39,11 @@ def collect_user_config():
             continue
 
         portfolio[ticker] = shares
-
-        alert_choice = input(f"Do you want to set an alert for {ticker}? (y/n): ").strip().lower()
+        while True:
+            alert_choice = input(f"Do you want to set an alert for {ticker}? (y/n): ").strip().lower()
+            if alert_choice in ("y", "n"):
+                break
+            print("Please enter 'y' or 'n'.")
         if alert_choice == "y":
             try:
                 limit = float(input(f"Alert when {ticker} price exceeds: "))
