@@ -4,20 +4,6 @@ import queue
 import yfinance as yf
 from src.shared_state import SharedState
 
-class LoggerThread(threading.Thread):
-    def __init__(self, log_queue, stop_event):
-        super().__init__(daemon=True)
-        self.log_queue = log_queue
-        self.stop_event = stop_event
-
-    def run(self):
-        while not self.stop_event.is_set():
-            try:
-                msg = self.log_queue.get(timeout=1)
-                print("[LOG]", msg)
-            except queue.Empty:
-                continue
-
 
 class PriceProducer(threading.Thread):
     def __init__(self, shared_state, work_queue, log_queue, stop_event):

@@ -2,7 +2,7 @@ import threading
 import time
 import queue
 from src.shared_state import SharedState
-from src.workers import LoggerThread, PriceProducer, PortfolioConsumer, AlertConsumer
+from src.workers import PriceProducer, PortfolioConsumer, AlertConsumer
 
 class TradeEngine:
     def __init__(self, portfolio, alerts, symbols):
@@ -11,7 +11,6 @@ class TradeEngine:
         self.price_queue = queue.Queue()
         self.log_queue = queue.Queue()
 
-        self.logger_thread = LoggerThread(self.log_queue, self.stop_event)
         self.producer = PriceProducer(
             self.shared_state, self.price_queue, self.log_queue, self.stop_event
         )
@@ -23,8 +22,7 @@ class TradeEngine:
         )
 
     def start(self):
-        print("Starting all threads...")
-        self.logger_thread.start()
+        self.log_queue.put("Starting all threads...")
         self.producer.start()
         self.portfolio_consumer.start()
         self.alert_consumer.start()
@@ -33,10 +31,5 @@ class TradeEngine:
         try:
             while True:
                 time.sleep(3)
-                with self.shared_state.lock:
-                    print("---")
-                    print("Prices:", self.shared_state.prices)
-                    print("Portfolio value:", self.shared_state.portfolio_value)
-                    print("---")
         except KeyboardInterrupt:
-            print("You stopped the application")
+            self.log_queue.put("Application stopped")
