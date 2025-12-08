@@ -1,9 +1,9 @@
-Multithread Financial Monitor with Real-Time API
+Multithread Financial Monitor with Real-Time API and GUI
 
 Author: Matyáš Prokop
 
 Summary:
-Monitors prices of selected stocks, calculates portfolio value, and sends alerts.
+A graphical desktop application that monitors prices of selected stocks, calculates portfolio value, and sends alerts in real-time.
 
 Requirements:
 
@@ -17,15 +17,17 @@ Run:
 
 python main.py
 
-You will be prompted in the console to enter:
+The application will open a graphical user interface (GUI) where you can:
 
-    which stocks you want to buy
+    Configure your portfolio by adding stocks with ticker symbols
 
-    how many shares to purchase
+    Specify the number of shares for each stock
 
-    whether you want an alert (y/n)
+    Set price alerts for individual stocks
 
-    the alert price (if applicable)
+    Monitor real-time stock prices and portfolio value
+
+    View logs and alert notifications
 
 Detailed documentation and specifications (BR/FR/NFR, tests) are available in the file DOCUMENTATION_EN.md.
 
